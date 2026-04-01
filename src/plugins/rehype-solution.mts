@@ -1,6 +1,6 @@
 import {visit} from "unist-util-visit";
 const transformer=(node,index,parent)=>{
-	if(node.tagName==="span"&&node.properties.className?.includes("exam-solution")){
+	if(node.tagName==="div"&&node.properties.className?.includes("exam-solution")){
 		parent.children[index]={
 			type:"element",
 			tagName:"details",
