@@ -16,7 +16,7 @@ const isMultiple=multiple===true||multiple==="true"||multiple==="";
 		const multiple=group.getAttribute("data-multiple")==="true";
 		const options=[...group.querySelectorAll(".exam-choice-option")];
 		const button=group.querySelector(".exam-choices-submit");
-		const hasAnswer=options.some(option=>option.getAttribute("data-answer")!==null);
+		const hasAnswer=options.some(option=>option.getAttribute("data-answer")==="true");
 		const name=`exam-choices-${groupIndex}`;
 
 		options.forEach((option,index)=>{

@@ -17,25 +17,25 @@
 1. 本题是 <Slot />。
 
 <Choices>
-	<False>多选题</False>
+	<Option>多选题</Option>
 	<True>单选题</True>
 </Choices>
 
 2. 下面哪些试题命名是符合规范的？
 
 <Choices>
-	<False>24-25-线性代数-期末</False>
-	<False>23-24-2-高等数学-期中</False>{/*应为《高等数学（上）》或《高等数学（下）》*/}
+	<Option>24-25-线性代数-期末</Option>
+	<Option>23-24-2-高等数学-期中</Option>{/*应为《高等数学（上）》或《高等数学（下）》*/}
 	<True>25-26-1-计算导论与程序设计-期末（网络空间安全学院）</True>{/*加括号补注是符合规范的*/}
-	<False>23-25-1-人工智能引论B-期末</False>{/*不存在2023-2025学年*/}
-	<False>维基真题编辑者自测</False>
+	<Option>23-25-1-人工智能引论B-期末</Option>{/*不存在2023-2025学年*/}
+	<Option>维基真题编辑者自测</Option>
 </Choices>
 
 3. 在前言中，“答案完成度”可以填哪些值？
 
 <Choices multiple>
 	<True>完整</True>
-	<False>可靠</False>
+	<Option>可靠</Option>
 	<True>完整可靠</True>
 	<True>残缺</True>
 </Choices>
@@ -44,35 +44,72 @@
 
 <Choices multiple>
 	<True>Blank</True>
-	<False>Choices</False>
+	<Option>Choices</Option>
 	<True>Figure</True>
 	<True>Slot</True>
-	<False>Solution</False>
+	<Option>Solution</Option>
 </Choices>
 
 <Choices multiple>
 	<True>Blank</True>
 	<True>Choices</True>
 	<True>Figure</True>
-	<False>Slot</False>
+	<Option>Slot</Option>
 	<True>Solution</True>
 </Choices>
 
 6. `Figure` 组件可以使用哪些参数？
 
 <Choices multiple>
-	<False>item</False>
+	<Option>item</Option>
 	<True>float</True>
 	<True>src</True>
-	<False>multiple</False>
+	<Option>multiple</Option>
 </Choices>
 
-7. `Slot` 组件的 `id` 参数意味着什么？
+7. `Slot` 组件的 `item` 属性意味着什么？
 
 <Choices>
 	<True>题号</True>
-	<False>题量</False>
-	<False>分值</False>
+	<Option>题量</Option>
+	<Option>分值</Option>
+</Choices>
+
+8. 以下每个选项都是一道选择题的定义。其中哪些实现是合理的？
+
+<Choices multiple>
+	<True>
+		```mdx
+		<Choices>
+			<Option>1</Option>
+			<Option>2</Option>
+		</Choices>
+		```
+	</True>
+	<True>
+		```mdx
+		<Choices>
+			<True>1</True>
+			<Option>2</Option>
+		</Choices>
+		```
+	</True>
+	<True>
+		```mdx
+		<Choices multiple>
+			<True>1</True>
+			<Option>2</Option>
+		</Choices>
+		```
+	</True>
+	<Option>
+		```mdx
+		<Choices>
+			<True>1</True>
+			<True>2</True>
+		</Choices>
+		```
+	</Option>
 </Choices>
 
 ## 填空题
