@@ -1,8 +1,39 @@
 ---
 const hasAnswer=Astro.slots.has("default");
 ---
-<label class:list={["exam-blank",!hasAnswer&&"is-disabled"]}>
-	{hasAnswer&&<input class="exam-blank-toggle" type="checkbox" />}
-	<span class="exam-blank-placeholder">{hasAnswer?"【显示答案】":"【暂无答案】"}</span>
-	{hasAnswer&&<span class="exam-blank-answer"><slot /></span>}
-</label>
+{hasAnswer?(
+	<button aria-pressed="false" class="exam-blank" type="button">
+		<span aria-hidden="true" class="exam-blank-placeholder">【显示答案】</span>
+		<span class="exam-blank-answer"><slot /></span>
+	</button>
+):(
+	<span class:list={["exam-blank","is-disabled"]}>【暂无答案】</span>
+)}
+<script>
+	const blanks=document.querySelectorAll(".exam-blank[aria-pressed]:not([data-exam-blank-ready])");
+	blanks.forEach(blank=>{
+		if(!(blank instanceof HTMLButtonElement))
+			return;
+
+		blank.setAttribute("data-exam-blank-ready","true");
+		const placeholder=blank.querySelector(".exam-blank-placeholder");
+		const answer=blank.querySelector(".exam-blank-answer");
+		if(placeholder instanceof HTMLElement&&answer instanceof HTMLElement){
+			const styles=getComputedStyle(blank);
+			const paddingLeft=parseFloat(styles.paddingLeft);
+			const paddingRight=parseFloat(styles.paddingRight);
+			const answerWidth=answer.getBoundingClientRect().width;
+			const placeholderWidth=placeholder.scrollWidth;
+			const extraPadding=Math.max(0,placeholderWidth-(answerWidth+paddingLeft+paddingRight))/2;
+			if(extraPadding>0){
+				blank.style.paddingLeft=`${paddingLeft+extraPadding}px`;
+				blank.style.paddingRight=`${paddingRight+extraPadding}px`;
+			}
+		}
+
+		blank.addEventListener("click",()=>{
+			const revealed=blank.getAttribute("aria-pressed")==="true";
+			blank.setAttribute("aria-pressed",revealed?"false":"true");
+		});
+	});
+</script>
