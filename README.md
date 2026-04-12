@@ -1,43 +1,22 @@
-# Astro Starter Kit: Minimal
+# BYR Docs 维基真题
 
-```sh
-pnpm create astro@latest -- --template minimal
+本站收录北京邮电大学近年的期中、期末考试题，使用更友好的 MDX 编辑语言和更丰富的插件，将往年试题整理成易阅读、可交互的形式。
+
+你可以在 [guide.mdx](./src/others/guide.mdx) 中看到我们的编辑规范，并在 [test.mdx](./src/others/test.mdx) 中查看自测题的源代码。
+
+我们非常欢迎你为维基真题贡献自己的一份力量！
+
+## 如何贡献
+
+1. [Fork 本仓库](https://github.com/byrdocs/byrdocs-wiki-internal/fork) 到你自己的 GitHub 账号下。
+2. Clone 你的仓库到本地。
+3. 安装必要依赖。
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+pnpm i
 ```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+4. 开启一个预览服务器。接下来，你可以在 http://localhost:4321 看到本网站的预览。
+```
+pnpm dev
+```
+5. 对 [exams](./exams) 中的文件进行编辑，并在预览网站中使用与对应文件同名（不带 `.mdx`）的路径名访问对应试题页。
+6. 确认编辑结果符合预期后，提交编辑，上传到你 fork 的仓库，并提出 pull request。
