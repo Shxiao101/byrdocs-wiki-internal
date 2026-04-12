@@ -87,7 +87,7 @@ html.dark .exam-blank.is-disabled:hover{
 .exam-solution{
 	background:color-mix(in srgb,var(--background) 97%,var(--black) 3%);
 	border:1px solid color-mix(in srgb,var(--background) 84%,var(--black) 16%);
-	border-radius:12px;
+	border-radius:4px;
 	display:flow-root;
 	margin:1em 0;
 	overflow:hidden;
