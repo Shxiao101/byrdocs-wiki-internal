@@ -57,7 +57,7 @@
 	:where(.wiki-content table),
 	:where(.wiki-content figure),
 	:where(.wiki-content details){
-		@apply my-4;
+		@apply my-0;
 	}
 	:where(.wiki-content ul){
 		@apply list-disc pl-6;
@@ -75,7 +75,7 @@
 		@apply rounded-md bg-slate-200/70 px-1.5 py-0.5 text-[0.95em] text-slate-900 dark:bg-slate-800/90 dark:text-slate-100;
 	}
 	:where(.wiki-content pre){
-		@apply overflow-x-auto rounded-2xl border border-slate-200 bg-slate-950 p-4 text-sm text-slate-100 shadow-sm dark:border-slate-800;
+		@apply overflow-x-auto rounded-[8px] border border-slate-200 bg-slate-950 p-4 text-sm text-slate-100 shadow-sm dark:border-slate-800;
 	}
 	:where(.wiki-content pre code){
 		@apply bg-transparent p-0 text-inherit;

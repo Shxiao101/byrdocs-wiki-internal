@@ -271,6 +271,7 @@ html.dark .exam-blank.is-disabled:hover{
 }
 .exam-figure{
 	margin:1em 0;
+	border-radius:8px;
 }
 .exam-figure-image{
 	display:block;
