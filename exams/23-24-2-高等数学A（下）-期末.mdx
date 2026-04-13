@@ -1,0 +1,228 @@
+---
+时间: 2023-2024学年第二学期
+科目: 高等数学A（下）
+阶段: 期末
+类型: 本科
+学院:
+- 电子工程学院
+- 计算机学院
+- 数字媒体与设计艺术学院
+- 网络空间安全学院
+- 智能工程与自动化学院
+来源: 709413e17d8e3a28849c057b656a4db1
+答案完成度: 完整
+---
+
+## 一、填空题（每小题 3 分，共 30 分）
+
+1. $\sum_{n=1}^{\infty}\frac{1+(-1)^{n} }{2^{n} }=$ <Blank>$\frac{2}{3}$</Blank>.
+
+2. 级数 $\sum_{n=1}^{\infty}\ln{\left(1-\frac{1}{2n}\right)}$ 的敛散性是 <Blank>发散</Blank>（填写: 收敛或发散）.
+
+3. 已知级数 $\sum_{n=1}^{\infty}\frac{(-1)^{n} }{n^{p} }$ 条件收敛, 则常数 $p$ 的取值范围是 <Blank>$p\ge1$</Blank>.
+
+4. 设 $f(x)=\begin{cases}1,&0\le x\le\pi,\\2,&\pi<x<2\pi\end{cases}$, $f(x)$ 以 $2\pi$ 为周期的傅里叶级数的和函数为 $s(x)$, 则 $s(-\pi)=$ <Blank>$\frac{3}{2}$</Blank>;
+
+5. 设函数 $\int_{x-y}^{x+y}\mathrm{e}^{t^{2} }$, 则 $\left.\frac{\partial^{2}z}{\partial x\,\partial y}\right|_{(1,1)}=$ <Blank>$4\mathrm{e}^{4}$</Blank>.
+
+6. 圆周 $\begin{cases}x^{2}+y^{2}+z^{2}=6,\\x+2y+z=1\end{cases}$ 上点 $(2,-1,1)$ 处切线方程为 <Blank>$\frac{x-2}{-3}=\frac{y+1}{-1}=\frac{z-1}{5}$</Blank>.
+
+7. 设 $\Omega$ 是球体闭区域 $\left\{(x,y,z)\mid x^{2}+y^{2}+z^{2}\le1\right\}$, 则 $\iiint_{\Omega}x^{2}\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z=$ <Blank>$\frac{4}{15}$</Blank>.
+
+8. 设 $L$ 是圆周 $x^{2}+y^{2}=1$, 则曲线积分 $\oint_{L}(x+y)^{2}\,\mathrm{d}s=$ <Blank>$2\pi$</Blank>.
+
+9. 设 $\Sigma$ 是平面 $x+2y+2z=1$ 在第一卦限部分, 则曲面积分 $\iint_{\Sigma}\left(\frac{x}{2}+y+z\right)\,\mathrm{d}S=$ <Blank>$\frac{3}{16}$</Blank>.
+
+10. $\int_{(0,0)}^{(1,\pi)}\mathrm{e}^{x}\cos{y}\,\mathrm{d}x-\mathrm{e}^{x}\sin{y}\,\mathrm{d}y=$ <Blank>$-1-\mathrm{e}$</Blank>.
+
+## 二（10 分）
+
+设函数 $z=f(x-y,2x+y)+\varphi[g(x,y)]$, 其中 $f,\,g$ 具有二阶连续偏导数, $\varphi$ 二阶可导, 求全微分 $\mathrm{d}z$ 及 $\frac{\partial^{2}z}{\partial x\,\partial y}$.
+
+<Solution>
+    全微分为: $\mathrm{d}z=[f_{1}+2f_{2}+\varphi'(g)g_{1}]\mathrm{d}x+[-f_{1}+f_{2}+\varphi'(g)g_{2}]\mathrm{d}y$.
+
+    $$
+    \frac{\partial^{2}z}{\partial{x}\,\partial{y} }=-f_{11}+f_{12} -2f_{21}+2f_{22}+\varphi''(g)g_{1}^{2}+\varphi'(g)g_{12}
+    $$
+
+    又因为 $f$ 的二阶偏导连续的, 所以 $f_{12}=f_{21}$, 因此
+
+    $$
+    \frac{\partial^{2}z}{\partial{x}\,\partial{y} }=-f_{11} -f_{12}+2f_{22}+\varphi''(g)g_{1}^{2}+\varphi'(g)g_{12}
+    $$
+</Solution>
+
+## 三（10 分）
+
+求幂函数 $\sum_{n=1}^{\infty}(-1)^{n-1}(n+1)nx^{n}$ 的收敛域及和函数, 并计算级数 $\sum_{n=1}^{\infty}\frac{(n+1)n}{3^{n} }$ 的和.
+
+<Solution>
+    收敛半径: $R=\lim_{n\rightarrow\infty}\left|\frac{(-1)^{n-1}(n+1)n}{(-1)^{n}(n+2)(n+1)}\right|=1$;
+
+    当 $x=\pm1$ 时, $\lim_{n\rightarrow\infty}(-1)^{n-1}(n+1)n=\infty$, 此时级数不收敛;
+
+    综上所述, 级数 $\sum_{n=1}^{\infty}(-1)^{n-1}(n+1)nx^{n}$ 的收敛域为 $(-1,1)$.
+
+    记和函数为 $S(x)$, 则
+
+    $$
+    \frac{S(x)}{x}=\sum_{n=1}^{\infty}(-1)^{n-1}(n+1)nx^{n-1}=\frac{\mathrm{d}^{2} }{\mathrm{d}x^{2} }\sum_{n=1}^{\infty}(-x)^{n+1}=\frac{\mathrm{d}^{2} }{\mathrm{d}x}\frac{1}{1+x}
+    $$
+
+    于是 $S(x)=\frac{2x}{(x+1)^{3} }$.
+
+    代入 $x=-\frac{1}{3}$ 可以得到 $S\left(-\frac{1}{3}\right)=\sum_{n=1}^{\infty}\frac{-(n+1)n}{3^{n} }=-\frac{9}{4}$. 所以
+
+    $$
+    \sum_{n=1}^{\infty}\frac{(n+1)n}{3^{n} }=\frac{9}{4}
+    $$
+</Solution>
+
+## 四（10 分）
+
+计算二重积分 $I=\iint_{D}\left[\frac{x}{1+x^{2}+y^{2} }+x^{3}\ln\left(y+\sqrt{y^{2}+1}\right)\right]\,\mathrm{d}x\,\mathrm{d}y$, 其中 $D$ 是半圆环域 $\left\{(x,y)\mid1\le x^{2}+y^{2}\le3,\;x+y\ge0\right\}$.
+
+<Solution>
+    先将积分区域分为两部分:
+
+    I: $1\le x^{2}+y^{2}\le3,\;x+y\ge0,\;x\ge y$;
+
+    II: $1\le x^{2}+y^{2}\le3,\;x+y\ge0,\;x\le y$.
+
+    因为 $x^{3}\ln\left(y+\sqrt{y^{2}+1}\right)$ 是关于 $x$ 和 $y$ 的奇函数, 所以对于 I 区域 (关于 $x$ 轴对称) 和 II 区域 (关于 $y$ 轴对称) 各有
+
+    $$
+    \iint x^{3}\ln\left(y+\sqrt{y^{2}+1}\right)\,\mathrm{d}x\,\mathrm{d}y=0
+    $$
+
+    而这个积分的第一项只需使用极坐标形式求解即可:
+
+    $$
+    \begin{aligned}
+    \iint\frac{x}{1+x^{2}+y^{2}}\,\mathrm{d}x\,\mathrm{d}y
+    &= \iint\frac{\rho^{2}\cos{\theta}}{1+\rho^{2}}\,\mathrm{d}\rho\,\mathrm{d}\theta \\
+    &= \int_{-\frac{\pi}{4}}^{\frac{3\pi}{4}}\,\mathrm{d}\theta \int_{1}^{\sqrt{3}} \frac{\rho^{2}}{1+\rho^{2}}\,\mathrm{d}\rho \\
+    &= \sqrt{2} \left( \sqrt{3} - 1 - \frac{\pi}{12} \right)
+    \end{aligned}
+    $$
+</Solution>
+
+## 五（10 分）
+
+计算累次积分 $\int_{0}^{1}\,\mathrm{d}y\int_{0}^{1-y}\,\mathrm{d}z\int_{0}^{1-y-z}(1-x)\mathrm{e}^{-(1-x-z)^{2} }\,\mathrm{d}x$.
+
+<Solution>
+    换序即可.
+
+    $$
+    \begin{align}
+    {}&\int_{0}^{1}\mathrm{d}y\int_{0}^{1-y}\mathrm{d}z\int_{0}^{1-y-z}(1-x)\mathrm{e}^{-(1-x-z)^{2} }\,\mathrm{d}x\\
+    ={}&\int_{0}^{1}(1-x)\,\mathrm{d}x\int_{0}^{1-x}\mathrm{e}^{-(1-x-z)^{2} }\,\mathrm{d}z\int_{0}^{1-x-z}\mathrm{d}y\\
+    ={}&\int_{0}^{1}(1-x)\,\mathrm{d}x\int_{0}^{1-x}(1-x-z)\mathrm{e}^{-(1-x-z)^{2} }\,\mathrm{d}z\\
+    ={}&\frac{1}{2}\int_{0}^{1}(1-x)\left[1-\mathrm{e}^{-(1-x)^{2} }\right]\mathrm{d}x\\
+    ={}&\frac{1}{4\mathrm{e} }.
+    \end{align}
+    $$
+</Solution>
+
+## 六（10 分）
+
+计算曲线积分 $I=\oint_{L}(1-x^{2}y)\,\mathrm{d}x+(1+xy^{2})\,\mathrm{d}y$, 其中 $L$ 是圆周 $x^{2}+y^{2}=2x$, 方向为逆时针.
+
+<Solution>
+    由格林公式可知,
+
+    $$
+    \oint_{L}(1-x^{2}y)\,\mathrm{d}x+(1+xy^{2})\,\mathrm{d}y=\iint_{S}(y^{2}+x^{2})\,\mathrm{d}x\,\mathrm{d}y
+    $$
+
+    其中 $S:\,x^{2}+y^{2}\le2x$.
+
+    再用极坐标形式求解:
+
+    $$
+    \iint_{S}(y^{2}+x^{2})\,\mathrm{d}x\,\mathrm{d}y=\iint_{S'}\rho^{3}\,\mathrm{d}\rho\,\mathrm{d}\theta=\int_{-\frac{\pi}{2} }^{\frac{\pi}{2} }\mathrm{d}\theta\int_{0}^{2\cos{\theta} }\rho^{3}\mathrm{d}\rho=\frac{3\pi}{2}
+    $$
+</Solution>
+
+## 七（10 分）
+
+计算曲面积分 $I=\iint_{\Sigma}(x+x^{3})\,\mathrm{d}y\,\mathrm{d}z+(y+y^{3})\,\mathrm{d}z\,\mathrm{d}x-2z\,\mathrm{d}x\,\mathrm{d}y$, 其中 $\Sigma$ 是抛物面 $z=x^{2}+y^{2}\;\left(0\le z\le1\right)$ 的下侧.
+
+<Solution>
+    补全封闭曲面，根据 Gauss 定理：
+
+    $$
+    \iint_{\Sigma\cup D}\mathbf F\cdot\mathbf n\,dS=\iiint_V(3x^2+3y^2)\,dV
+    $$
+
+    极坐标计算体积：
+
+    $$
+    3\int_0^{2\pi}d\theta\int_0^1d\rho\int_{\rho^2}^1\rho^3dz
+    =3\cdot2\pi\left(\tfrac1{4}-\tfrac1{6}\right)
+    =\tfrac\pi2
+    $$
+
+    圆盘D上通量：
+
+    $$
+    \iint_D\mathbf F\cdot\mathbf n\,dS=-2\pi
+    $$
+
+    因此：
+
+    $$
+    I=\tfrac\pi2-(-2\pi)=\tfrac{5\pi}2
+    $$
+</Solution>
+
+## 八（10 分）
+
+求函数 $f(x,y)=2x+3y+xy$ 在圆周 $C:\;x^{2}+y^{2}=52$ 上方向导数的最大值.
+
+<Solution>
+    $\nabla f=(2+y,3+x)$, 所以 $\left\|\nabla f\right\|=\sqrt{(3+x)^{2}+(2+y)^{2} }$. 要在限制条件 $x^{2}+y^{2}=52$ 下考虑求出 $\left\|\nabla f\right\|$ 的最大值, 应使用拉格朗日乘数法.
+
+    考虑到
+
+    $$
+    \begin{cases}
+    g(x,y)=(3+x)^{2}+(2+y)^{2},\\
+    L(x,y,\lambda)=(3+x)^{2}+(2+y)^{2}+\lambda(x^{2}+y^{2} -52),
+    \end{cases}
+    $$
+
+    有
+
+    $$
+    \begin{cases}
+    L_{x}=2(x+3)+2\lambda x=0,\\
+    L_{y}=2(y+2)+2\lambda y=0,\\
+    L_{\lambda}=x^{2}+y^{2} -52=0,
+    \end{cases}
+    $$
+
+    解出
+
+    $$
+    \begin{cases}
+    x=-6,\\
+    y=-4,\\
+    \lambda=-\frac{1}{2}
+    \end{cases}
+    $$
+
+    或
+
+    $$
+    \begin{cases}
+    x=6,\\
+    y=4,\\
+    \lambda=-\frac{3}{2}.
+    \end{cases}
+    $$
+
+    经过验证, $\left\|\nabla f(-6,-4)\right\|=\sqrt{13}$, $\left\|\nabla f(6,4)\right\|=3\sqrt{13}$. 所以 $f(x,y)$ 在圆周 $C$ 上方向导数的最大值是 $3\sqrt{13}$.
+</Solution>
