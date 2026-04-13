@@ -1,7 +1,7 @@
 ---
-import ThemeIcon from "/src/components/ThemeIcon.astro";
+import ExamAnswersToggle from "/src/components/ExamAnswersToggle.astro";
 
-const {pageTitle}=Astro.props;
+const {pageTitle,examControls=false}=Astro.props;
 ---
 
 <nav class="border-b border-slate-200/80 bg-white/85 backdrop-blur dark:border-slate-800 dark:bg-slate-950/80">
@@ -10,6 +10,6 @@ const {pageTitle}=Astro.props;
 			<img alt="BYR Docs" class="h-7 w-7" src="/favicon.svg" />
 		</a>
 		<span class="min-w-0 flex-1 truncate text-lg font-semibold tracking-tight text-slate-950 sm:text-2xl dark:text-white">{pageTitle}</span>
-		<ThemeIcon />
+		{examControls&&<ExamAnswersToggle />}
 	</div>
 </nav>

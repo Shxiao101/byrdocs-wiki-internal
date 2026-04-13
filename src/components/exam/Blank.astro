@@ -11,11 +11,28 @@ const hasAnswer=Astro.slots.has("default");
 )}
 <script>
 	const blanks=document.querySelectorAll(".exam-blank[aria-pressed]:not([data-exam-blank-ready])");
-	blanks.forEach(blank=>{
+	blanks.forEach((blank,blankIndex)=>{
 		if(!(blank instanceof HTMLButtonElement))
 			return;
 
 		blank.setAttribute("data-exam-blank-ready","true");
+		const blankKey=`blank:${blankIndex}`;
+		const examState=window.__examState;
+		const setRevealed=(revealed)=>{
+			blank.setAttribute("aria-pressed",revealed?"true":"false");
+			examState?.update?.((state)=>{
+				const blanksState={...state.blanks};
+				if(revealed)
+					blanksState[blankKey]=true;
+				else
+					delete blanksState[blankKey];
+				return {
+					...state,
+					blanks:blanksState,
+				};
+			});
+			examState?.sync?.();
+		};
 		const placeholder=blank.querySelector(".exam-blank-placeholder");
 		const answer=blank.querySelector(".exam-blank-answer");
 		if(placeholder instanceof HTMLElement&&answer instanceof HTMLElement){
@@ -31,9 +48,11 @@ const hasAnswer=Astro.slots.has("default");
 			}
 		}
 
-		blank.addEventListener("click",()=>{
-			const revealed=blank.getAttribute("aria-pressed")==="true";
-			blank.setAttribute("aria-pressed",revealed?"false":"true");
-		});
+		if(examState?.read?.().blanks?.[blankKey]===true)
+			blank.setAttribute("aria-pressed","true");
+
+		blank.addEventListener("click",()=>setRevealed(blank.getAttribute("aria-pressed")!=="true"));
+		window.addEventListener(examState?.events?.setAll??"examsetall",(event)=>setRevealed(event instanceof CustomEvent&&event.detail?.revealed===true));
+		examState?.sync?.();
 	});
 </script>
