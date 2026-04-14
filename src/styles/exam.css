@@ -152,6 +152,9 @@ html.dark .exam-blank.is-disabled:hover{
 }
 .exam-solution-content{
 	color:color-mix(in srgb,var(--black) 88%,var(--background) 12%);
+	overflow-x:auto;
+	overflow-y:hidden;
+	overscroll-behavior-x:contain;
 	padding:0.2em 1em 1em;
 }
 .exam-solution-content>:first-child{
