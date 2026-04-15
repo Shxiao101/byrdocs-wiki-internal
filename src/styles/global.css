@@ -86,11 +86,15 @@
 	:where(.wiki-content table){
 		@apply w-full border-collapse border border-slate-200 text-sm shadow-sm dark:border-slate-800;
 	}
+	:where(.wiki-content th),
+	:where(.wiki-content td){
+		@apply border border-slate-200 px-4 py-3 dark:border-slate-800;
+	}
 	:where(.wiki-content th){
-		@apply bg-slate-100 px-4 py-3 text-left font-semibold text-slate-900 dark:bg-slate-900 dark:text-slate-100;
+		@apply bg-slate-100 text-left font-semibold text-slate-900 dark:bg-slate-900 dark:text-slate-100;
 	}
 	:where(.wiki-content td){
-		@apply border-t border-slate-200 px-4 py-3 align-top dark:border-slate-800;
+		@apply align-top;
 	}
 	:where(.wiki-content img){
 		@apply rounded-xl;
