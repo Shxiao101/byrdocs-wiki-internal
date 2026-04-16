@@ -51,6 +51,50 @@
 }
 
 @layer components {
+  :where(.layout-shell) {
+    --exam-sidebar-gap-expanded: 1.75rem;
+    --exam-sidebar-width-expanded: clamp(20rem, 22vw, 26rem);
+  }
+  :where(.layout-shell .layout-container) {
+    max-width: 72rem;
+  }
+  :where(.exam-toc-desktop-trigger) {
+    display: none;
+  }
+  :where(.exam-toc-desktop-trigger[data-state="expanded"]) {
+    background: rgb(226 232 240 / 0.75);
+    border-color: rgb(203 213 225 / 0.95);
+    color: rgb(15 23 42 / 0.92);
+  }
+  .dark :where(.exam-toc-desktop-trigger[data-state="expanded"]) {
+    background: rgb(30 41 59 / 0.96);
+    border-color: rgb(71 85 105 / 0.95);
+    color: rgb(248 250 252 / 0.98);
+  }
+  @media (min-width: 1680px) {
+    :where(.layout-shell[data-has-exam-toc="true"] .exam-toc-desktop-trigger) {
+      display: inline-flex;
+      left: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+    :where(.layout-shell[data-has-exam-toc="true"] main.layout-container) {
+      left: 0;
+      position: relative;
+      transition: left 0.22s ease;
+    }
+    html[data-exam-toc-desktop="expanded"]
+      :where(.layout-shell[data-has-exam-toc="true"] main.layout-container) {
+      left: calc(
+        (
+            var(--exam-sidebar-width-expanded) +
+              var(--exam-sidebar-gap-expanded)
+          ) / 2
+      );
+    }
+  }
   :where(.wiki-content) {
     @apply w-full text-[1.02rem] leading-7 text-slate-800 dark:text-slate-200;
   }
@@ -68,6 +112,62 @@
   }
   :where(.wiki-content h3) {
     @apply mt-8 mb-4 text-xl font-semibold tracking-tight text-slate-950 dark:text-white;
+  }
+  :where(.floating-toolbar) {
+    @apply fixed bottom-6 right-4 z-50 flex flex-col gap-2 sm:bottom-8 sm:right-6;
+  }
+  :where(.floating-toolbar-control) {
+    @apply relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 no-underline shadow-md dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300;
+    transition:
+      opacity 0.2s ease,
+      color 0.15s ease,
+      background-color 0.15s ease,
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+  :where(.floating-toolbar-control)::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 10px);
+    transform: translate3d(6px, -50%, 0);
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    border-radius: 0.75rem;
+    border: 1px solid rgb(226 232 240 / 0.95);
+    background: rgb(255 255 255 / 0.96);
+    color: rgb(15 23 42 / 0.95);
+    box-shadow: 0 12px 28px rgb(15 23 42 / 0.14);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1;
+    padding: 0.6rem 0.75rem;
+    transition:
+      opacity 0.18s ease,
+      transform 0.18s ease;
+    transition-delay: 0s;
+  }
+  :where(.floating-toolbar-control:hover)::before,
+  :where(.floating-toolbar-control:focus-visible)::before {
+    opacity: 1;
+    transform: translate3d(0, -50%, 0);
+    transition-delay: 0.1s;
+  }
+  :where(.floating-toolbar-control:focus-visible) {
+    outline: 2px solid rgb(59 130 246 / 0.45);
+    outline-offset: 2px;
+  }
+  .dark :where(.floating-toolbar-control)::before {
+    border-color: rgb(51 65 85 / 0.95);
+    background: rgb(15 23 42 / 0.96);
+    color: rgb(226 232 240 / 0.96);
+    box-shadow: 0 12px 28px rgb(2 6 23 / 0.32);
+  }
+  @media (hover: none) {
+    :where(.floating-toolbar-control)::before {
+      display: none;
+    }
   }
   :where(.wiki-content p),
   :where(.wiki-content ul),
@@ -148,10 +248,10 @@
   .wiki-content .code-block-wrapper .code-toolbar button.is-copied {
     color: #4ade80;
   }
-  .wiki-content .astro-code:not(:first-child) {
+  .wiki-content .code-block-wrapper:not(:first-child) {
     margin-top: 1em;
   }
-  .wiki-content .astro-code:not(:last-child) {
+  .wiki-content .code-block-wrapper:not(:last-child) {
     margin-bottom: 1em;
   }
   :where(.wiki-content pre code) {

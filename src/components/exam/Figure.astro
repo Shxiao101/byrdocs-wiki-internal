@@ -1,10 +1,19 @@
 ---
-const { src, float = false, alt } = Astro.props;
+const { src, float = false, alt, background } = Astro.props;
 const hasCaption = Astro.slots.has("default");
 const isFloat = float === true || float === "true" || float === "";
 const isSvg = /\.svg(?:$|[?#])/i.test(src);
 const caption = hasCaption ? await Astro.slots.render("default") : undefined;
 const imageAlt = alt ?? (hasCaption ? "题图" : src);
+const imageBackground =
+  background === true || background === ""
+    ? "white"
+    : typeof background === "string" && background.trim()
+      ? background.trim()
+      : undefined;
+const figureStyle = imageBackground
+  ? `--exam-figure-background: ${imageBackground};`
+  : undefined;
 const pathname = Astro.url.pathname.replace(/\/$/, "");
 const imageSrc = pathname.startsWith("/exam/")
   ? `${pathname}/${src}`
@@ -16,6 +25,7 @@ const imageSrc = pathname.startsWith("/exam/")
   data-exam-figure
   data-exam-figure-alt={imageAlt}
   data-exam-figure-src={src}
+  style={figureStyle}
 >
   <button
     aria-label="预览图片"

@@ -251,6 +251,7 @@
 
 - 在试题页中，图片来源 `src` 应填写**当前试题目录内的相对文件名**，例如 `题图3.1.png`。如果某份试题需要插图，则它应使用 `exams/试卷名/index.mdx + 同目录资源文件` 的组织方式。
 - 图片默认使用斥文嵌入；如需串文旁置，请加注 `float` 属性。
+- 对于透明背景的 `png` / `svg`，应显式设置 `background`。如果题图本身没有背景色，通常应手动写成 `background="white"`，避免深色模式下对比度过低；如果确实希望保持透明，也必须显式写 `background="transparent"`。
 - 组件内填写图片标题；如果留空，则代表没有图片标题。（建议只在串文旁置时使用图片标题）
 - 本指南页不是试题页，因此下方预览仍使用站点已有文件 `favicon.svg`，这里只是演示组件效果。
 
@@ -261,13 +262,13 @@
             ```mdx
             两种插入图片的方法：
 
-            <Figure src="favicon.svg" float>
+            <Figure src="favicon.svg" float background="transparent">
                 BYR Docs 维基真题
             </Figure>
 
             串文旁置
 
-            <Figure src="favicon.svg" />
+            <Figure src="favicon.svg" background="transparent" />
 
             斥文嵌入
             ```
@@ -278,13 +279,13 @@
         <div class="guide-example-panel-body guide-example-preview">
             两种插入图片的方法：
 
-            <Figure src="favicon.svg" float>
+            <Figure src="favicon.svg" float background="transparent">
                 BYR Docs 维基真题
             </Figure>
 
             串文旁置
 
-            <Figure src="favicon.svg" />
+            <Figure src="favicon.svg" background="transparent" />
 
             斥文嵌入
         </div>

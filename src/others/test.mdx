@@ -10,7 +10,7 @@
 
 ## 选择题
 
-<Figure float src="favicon.svg">
+<Figure float src="favicon.svg" background="white">
     BYR Docs 维基真题
 </Figure>
 
@@ -68,6 +68,7 @@
 
 <Choices multiple>
     <Option>item</Option>
+    <Option correct>background</Option>
     <Option correct>float</Option>
     <Option correct>src</Option>
     <Option>multiple</Option>
@@ -180,12 +181,12 @@
 
 <Solution>
 ```mdx
-<Figure float src="题图1.svg">
+<Figure float src="题图1.svg" background="white">
     BYR Docs 维基真题
 </Figure>
 ```
 
-其中 `float` 和 `src="题图1.svg"` 的位置可以调换。
+其中 `float`、`src="题图1.svg"` 和 `background="white"` 的位置可以调换。若图片本身应保持透明，也可以改成 `background="transparent"`。
 </Solution>
 
 ### 4.

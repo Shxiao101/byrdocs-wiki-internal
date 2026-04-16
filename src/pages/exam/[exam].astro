@@ -14,9 +14,14 @@ export async function getStaticPaths() {
   }));
 }
 const { exam } = Astro.props;
-const { Content } = await render(exam);
+const { Content, headings } = await render(exam);
 ---
 
-<ExamLayout frontmatter={exam.data} title={exam.id} editPath={exam.filePath}>
+<ExamLayout
+  frontmatter={exam.data}
+  title={exam.id}
+  editPath={exam.filePath}
+  headings={headings}
+>
   <Content components={examComponents} />
 </ExamLayout>

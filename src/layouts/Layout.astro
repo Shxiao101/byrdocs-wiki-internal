@@ -5,7 +5,12 @@ import PageToolbar from "/src/components/PageToolbar.astro";
 import "/src/styles/global.css";
 import { getGitHubEditUrl } from "/src/utils/github";
 
-const { pageTitle, editPath, showToolbar = true } = Astro.props;
+const {
+  pageTitle,
+  editPath,
+  showToolbar = true,
+  showExamTocToggle = false,
+} = Astro.props;
 const organization = "BYR Docs";
 const pageDescription =
   "BYR Docs 维基真题收录北京邮电大学近年试题，是一个开放、共建、共享的维基网站。";
@@ -41,6 +46,24 @@ const editHref =
       applyTheme();
       themeMedia.addEventListener("change", applyTheme);
     </script>
+    {
+      showExamTocToggle && (
+        <script is:inline>
+          (() => {
+            const storageKey = "exam-toc-desktop-collapsed";
+            let collapsed = false;
+
+            try {
+              collapsed = window.localStorage.getItem(storageKey) === "true";
+            } catch {}
+
+            document.documentElement.dataset.examTocDesktop = collapsed
+              ? "collapsed"
+              : "expanded";
+          })();
+        </script>
+      )
+    }
     <script is:inline>
       const examStateStorageKeyPrefix = "exam-state:";
       const examStateTtlMs = 12 * 60 * 60 * 1000;
@@ -269,10 +292,13 @@ const editHref =
         });
       });
     </script>
-    <div class="flex min-h-screen flex-col">
-      <Header />
+    <div
+      class="layout-shell flex min-h-screen flex-col"
+      data-has-exam-toc={showExamTocToggle ? "true" : undefined}
+    >
+      <Header showExamTocToggle={showExamTocToggle} />
       <main
-        class="mx-auto flex w-full max-w-6xl flex-1 px-4 py-6 sm:px-6 lg:px-8"
+        class="layout-container mx-auto flex w-full flex-1 px-4 py-6 sm:px-6 lg:px-8"
       >
         <article class="wiki-content min-w-0 flex-1">
           <h1>{pageTitle}</h1>
@@ -282,5 +308,64 @@ const editHref =
       {showToolbar && editHref && <PageToolbar editHref={editHref} />}
       <Footer />
     </div>
+    {
+      showExamTocToggle && (
+        <script is:inline>
+          var initExamTocDesktopToggle = function() {
+            var button = document.getElementById("examTocDesktopToggle");
+            if (!(button instanceof HTMLButtonElement))
+              return;
+
+            var storageKey = "exam-toc-desktop-collapsed";
+            var getCollapsed = function() {
+              return document.documentElement.dataset.examTocDesktop === "collapsed";
+            };
+            var syncButton = function() {
+              var collapsed = getCollapsed();
+              button.dataset.state = collapsed ? "collapsed" : "expanded";
+              button.setAttribute("aria-expanded", String(!collapsed));
+              button.setAttribute(
+                "aria-label",
+                collapsed ? "展开目录侧边栏" : "折叠目录侧边栏",
+              );
+            };
+            var setCollapsed = function(collapsed) {
+              document.documentElement.dataset.examTocDesktop = collapsed
+                ? "collapsed"
+                : "expanded";
+              try {
+                window.localStorage.setItem(
+                  storageKey,
+                  collapsed ? "true" : "false",
+                );
+              } catch {}
+              syncButton();
+              window.dispatchEvent(
+                new CustomEvent("examtocdesktopchange", {
+                  detail: { collapsed: collapsed },
+                }),
+              );
+            };
+
+            syncButton();
+            button.addEventListener("click", function() {
+              setCollapsed(!getCollapsed());
+            });
+            window.addEventListener("examtocdesktopchange", syncButton);
+            window.__examTocDesktop = {
+              getCollapsed: getCollapsed,
+              setCollapsed: setCollapsed,
+            };
+          };
+
+          if (document.readyState === "loading")
+            document.addEventListener("DOMContentLoaded", initExamTocDesktopToggle, {
+              once: true,
+            });
+          else
+            initExamTocDesktopToggle();
+        </script>
+      )
+    }
   </body>
 </html>
