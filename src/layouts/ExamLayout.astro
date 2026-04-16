@@ -2,11 +2,17 @@
 import InfoBox from "/src/components/InfoBox.astro";
 import ExamToolbar from "/src/components/ExamToolbar.astro";
 import Layout from "/src/layouts/Layout.astro";
+import { getGitHubEditUrl } from "/src/utils/github";
 import "/src/styles/exam.css";
-const {title,frontmatter}=Astro.props;
+const { title, frontmatter, editPath } = Astro.props;
+const editHref =
+  typeof editPath === "string" && editPath.length > 0
+    ? getGitHubEditUrl(editPath)
+    : undefined;
 ---
-<Layout pageTitle={title}>
-	<InfoBox frontmatter={frontmatter} />
-	<slot />
-	<ExamToolbar />
+
+<Layout pageTitle={title} editPath={editPath} showToolbar={false}>
+  <InfoBox frontmatter={frontmatter} />
+  <slot />
+  <ExamToolbar editHref={editHref} />
 </Layout>

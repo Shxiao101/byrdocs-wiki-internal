@@ -1,0 +1,67 @@
+---
+const { editHref } = Astro.props;
+---
+
+{
+  editHref && (
+    <div
+      class="fixed bottom-6 right-4 z-50 flex flex-col gap-2 sm:bottom-8 sm:right-6"
+      id="pageToolbar"
+    >
+      <button
+        class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-md transition-opacity active:scale-95 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 cursor-pointer"
+        id="pageBackToTop"
+        type="button"
+        aria-label="回到顶部"
+        title="回到顶部"
+      >
+        <svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 15l-6-6-6 6" />
+        </svg>
+      </button>
+      <a
+        class="no-underline inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-md transition active:scale-95 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+        href={editHref}
+        aria-label="在 GitHub 上编辑"
+        title="在 GitHub 上编辑"
+      >
+        <svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 20h9" />
+          <path d="m16.5 3.5 4 4L8 20l-5 1 1-5 12.5-12.5Z" />
+        </svg>
+      </a>
+    </div>
+  )
+}
+
+<style is:global>
+  #pageBackToTop {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  #pageBackToTop.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  @media print {
+    #pageToolbar {
+      display: none !important;
+    }
+  }
+</style>
+
+<script is:inline>
+  var pageBackToTop = document.getElementById("pageBackToTop");
+
+  var updatePageBackToTopVisibility = function() {
+    if (!pageBackToTop) return;
+    pageBackToTop.classList.toggle("is-visible", window.scrollY > 200);
+  };
+
+  updatePageBackToTopVisibility();
+  window.addEventListener("scroll", updatePageBackToTopVisibility, { passive: true });
+  pageBackToTop?.addEventListener("click", function() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>

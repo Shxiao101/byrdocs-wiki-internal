@@ -1,7 +1,12 @@
+---
+const { editHref } = Astro.props;
+---
+
 <div
   class="fixed bottom-6 right-4 z-50 flex flex-col gap-2 sm:bottom-8 sm:right-6"
   id="examToolbar"
 >
+
   <button
     class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-md transition-opacity active:scale-95 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 cursor-pointer"
     id="backToTop"
@@ -13,6 +18,21 @@
       <path d="M18 15l-6-6-6 6"></path>
     </svg>
   </button>
+  {
+    editHref && (
+      <a
+        class="no-underline inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-md transition active:scale-95 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+        href={editHref}
+        aria-label="在 GitHub 上编辑"
+        title="在 GitHub 上编辑"
+      >
+        <svg aria-hidden="true" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="M12 20h9"></path>
+          <path d="m16.5 3.5 4 4L8 20l-5 1 1-5 12.5-12.5Z"></path>
+        </svg>
+      </a>
+    )
+  }
   <button
     class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-md transition active:scale-95 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 cursor-pointer"
     id="examPrint"

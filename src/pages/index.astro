@@ -6,7 +6,7 @@ const allExams = await getCollection("exams");
 const exams = [...allExams].sort((a, b) => b.id.localeCompare(a.id, "zh-CN"));
 ---
 
-<Layout pageTitle="欢迎来到 BYR Docs 维基真题">
+<Layout pageTitle="欢迎来到 BYR Docs 维基真题" editPath="src/pages/index.astro">
   <p class="text-lg leading-8 text-slate-700 dark:text-slate-300">
     本站收录北京邮电大学近年的期中、期末考试题。
   </p>

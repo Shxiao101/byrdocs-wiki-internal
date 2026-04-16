@@ -17,6 +17,6 @@ const { exam } = Astro.props;
 const { Content } = await render(exam);
 ---
 
-<ExamLayout frontmatter={exam.data} title={exam.id}>
+<ExamLayout frontmatter={exam.data} title={exam.id} editPath={exam.filePath}>
   <Content components={examComponents} />
 </ExamLayout>

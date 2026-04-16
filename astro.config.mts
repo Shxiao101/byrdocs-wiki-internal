@@ -7,6 +7,12 @@ import remarkMath from "remark-math";
 import remarkChoices from "./src/plugins/remarkChoices";
 import viteExamAssets from "./src/plugins/viteExamAssets";
 
+type AstroConfig = Parameters<typeof defineConfig>[0];
+type AstroVitePlugins = NonNullable<NonNullable<AstroConfig["vite"]>["plugins"]>;
+
+// @tailwindcss/vite resolves to a distinct Vite type instance; normalize it here.
+const vitePlugins = [...tailwindcss(), viteExamAssets()] as unknown as AstroVitePlugins;
+
 // https://astro.build/config
 export default defineConfig({
     site: "https://wiki.byrdocs.org",
@@ -16,7 +22,6 @@ export default defineConfig({
         rehypePlugins: [rehypeKatex],
     },
     vite: {
-        // @ts-expect-error -- dual vite type instances from @types/node
-        plugins: [tailwindcss(), viteExamAssets()],
+        plugins: vitePlugins,
     },
 });
